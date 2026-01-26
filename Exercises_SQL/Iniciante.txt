@@ -1,0 +1,22 @@
+1. Criação de Tabela (DDL)
+Crie uma tabela chamada funcionarios com os seguintes campos:
+
+id (inteiro, chave primária, auto incremento)
+nome (varchar 100)
+cargo (varchar 50)
+salario (decimal 10,2)
+data_admissao (date)
+
+2. Inserção de Dados (DML)
+Insira 3 funcionários fictícios na tabela criada no exercício anterior.
+3. Consulta Básica (DQL)
+Liste:
+
+Todos os funcionários
+Apenas nome e cargo
+Funcionários com salário maior que 3000
+
+4. Atualização de Dados
+Atualize o salário de um funcionário específico.
+5. Exclusão
+Apague um funcionário usando o id.

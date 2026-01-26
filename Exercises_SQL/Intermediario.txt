@@ -1,0 +1,27 @@
+6. Ordenação
+Liste os funcionários em ordem:
+
+Alfabética crescente pelo nome
+Por salário, do maior para o menor
+
+7. Funções de Agregação
+Consulta para:
+
+Contar quantos funcionários existem
+Somar todos os salários
+Calcular a média salarial
+
+8. Filtros avançados
+Liste:
+
+Funcionários cujo nome contém “a”
+Funcionários admitidos depois de 2022
+
+9. Agrupamento (GROUP BY)
+Agrupe funcionários pelo cargo e exiba:
+
+cargo
+quantidade de funcionários no cargo
+
+10. HAVING
+Mostre somente cargos com 2 ou mais funcionários.

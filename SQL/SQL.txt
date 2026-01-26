@@ -1,0 +1,68 @@
+**Linguagem de Consulta de Dados**
+###################################################################################################################################
+🏛️ O que é Banco de Dados e o que é SQL
+
+🔹 Banco de Dados:
+
+Um banco de dados (BD) é um conjunto organizado de informações estruturadas,
+geralmente armazenadas de forma que possam ser acessadas rapidamente por sistemas.
+
+Um SGBD (Sistema Gerenciador de Banco de Dados),
+como MySQL, PostgreSQL ou SQL Server, 
+
+🔹 Software responsável por:
+
+1️⃣ Armazenar os dados;
+2️⃣ Organizar e permitir consultas;
+3️⃣ Garantir segurança e integridade;
+4️⃣ Controlar acesso e permissões.
+🎯 Manipulação de Dados
+🎯 Execução de operações
+-- Operador lógico
+-- Pseudonimo
+
+###################################################################################################################################
+
+🔹 Demais:
+
+- Schema pode ser modificado, mas é trivial que aconteça dificilmente.
+- Linhas: instancias/Tuplas.
+
+🔹 Clasulas
+- Funções = instruções do banco de dados;
+- Reclama caso necessário alguma função ou instrução requerida;
+- Ex: SELECT now() -> faltou o comando dentro do parenteses, então dá errp na instrução;
+- SELECT, FROM, WHERE, ORDER BY, GROUP BY, HAVING...
+- As Clasulas são funções que definem as instruções (Steatments). As instruções por sua vez retornam os registros do banco de dados
+
+🔹 Distinct
+- Evita redundancia de dados.
+
+🔹 As
+- Renomeia um atributo
+
+🔹 SQL — Structured Query Language
+- O SQL é a linguagem padrão para comunicação com bancos de dados relacionais.
+- Ela é dividida em sublinagens, cada uma com um propósito específico.
+- As principais são:
+
+1️⃣ DDL – Data Definition Language
+2️⃣ DML – Data Manipulation Language
+3️⃣ DQL – Data Query Language
+4️⃣ DCL – Data Control Language
+5️⃣ TCL – Transaction Control Language
+
+🔹 Concatenando informações (||)
+- Nome = Fname, Minit, Lname
+- AAtribuir um unico sentido com:
+
+SELECT Fname, Minit, Lname || ',' || ',' ||
+    STATE AS Complete_name FROM employee;
+--State concatena tudo para que o SQL entenda a informação que foi concatenada.
+
+- No MySQL, fica assim:
+
+SELECT concat(Fname, '', Minit, '', Lname) 
+    AS Complete_name
+    FROM employee;
+

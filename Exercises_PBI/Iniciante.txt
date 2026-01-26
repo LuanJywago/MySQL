@@ -1,0 +1,5 @@
+Conecte o Power BI ao MySQL usando o MySQL Connector.
+Importe a tabela funcionarios.
+Crie um gráfico de barras mostrando:
+
+Funcionário × Salário

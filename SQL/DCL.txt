@@ -1,0 +1,19 @@
+********* DCL- Data Control ********
+
+🤖🗣️~ Controle de permissões e segurança.
+
+🔹 Comandos principais:
+
+GRANT — conceder acesso
+REVOKE — remover acesso
+
+###################################################################################################################################
+
+-- Concedendo acesso SELECT ao usuário estagiario
+GRANT SELECT ON banco.clientes TO 'estagiario'@'%';
+
+-- Removendo acesso
+REVOKE SELECT ON banco.clientes FROM 'estagiario'@'%';
+
+###################################################################################################################################
+

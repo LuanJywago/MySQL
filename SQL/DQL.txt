@@ -1,0 +1,23 @@
+********* DQL- Data Query ********
+🤖🗣️~ Focada em consultar dados.
+🎯permissão restrita
+
+🔹 Comando principal:
+
+- SELECT
+
+###################################################################################################################################
+
+🎲 EXEMPLO prático comentado 🎲
+
+-- Selecionando todos os clientes
+SELECT * FROM clientes;
+
+-- Consultando apenas alguns campos
+SELECT nome, email FROM clientes;
+
+-- Filtros
+SELECT * FROM clientes
+WHERE nome LIKE '%Silva%';
+
+###################################################################################################################################

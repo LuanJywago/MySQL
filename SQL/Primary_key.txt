@@ -1,0 +1,32 @@
+ Por que e como um banco pode ter 1 ou mais PRIMARY KEYS?
+Na verdade, uma tabela só pode ter uma PRIMARY KEY, mas…
+Essa chave pode ser:
+✔ simples — 1 coluna
+✔ composta — 2 ou mais colunas
+
+🔹 Por que usar chave composta?
+
+Quando nenhuma coluna individual identifica um registro.
+Quando a combinação de campos é única.
+Muito usada em tabelas de relacionamento (N pra N).
+
+
+🔹 Exemplo de chave simples
+
+CREATE TABLE produtos (
+    id_produto INT PRIMARY KEY,
+    nome VARCHAR(100)
+);
+
+🔹 Exemplo de chave composta
+
+CREATE TABLE matriculas (
+    id_aluno INT,
+    id_curso INT,
+    data_matricula DATE,
+    PRIMARY KEY (id_aluno, id_curso)
+);
+➡ Nesse exemplo, o aluno pode se matricular em vários cursos.
+➡ Mas não pode haver duplicidade da mesma matrícula.
+
+

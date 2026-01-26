@@ -1,0 +1,52 @@
+🚀 Desafio 1 — Sistema de Vendas
+Crie as tabelas:
+Tabela: produtos
+
+id_produto
+nome
+preco
+
+Tabela: vendas
+
+id_venda
+id_produto (FK)
+quantidade
+data_venda
+
+Desafios:
+
+Insira 5 produtos e 10 vendas.
+Crie uma consulta que mostre:
+
+nome do produto
+quantidade vendida
+valor total por produto (preco × quantidade)
+
+
+Mostre o produto mais vendido.
+Mostre a maior venda (em valor).
+
+
+🚀 Desafio 2 — Relacionamentos M:N
+Monte tabelas para um sistema de cursos:
+Alunos
+Cursos
+Matriculas (chave composta)
+Desafios:
+
+Insira 5 alunos, 3 cursos e várias matrículas.
+Liste todos os alunos matriculados em cada curso.
+Mostre os cursos com mais alunos.
+
+
+🚀 Desafio 3 — Normalização
+Você recebe uma tabela ruim assim:
+
+
+nome_cliente | telefone | produto | quantidade | preco_unitario
+
+Desafio:
+
+Explique como normalizaria essa tabela
+Crie o SQL das tabelas normalizadas
+Explique brevemente por que sua solução evita redundância

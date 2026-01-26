@@ -1,0 +1,26 @@
+******* DML - Manipulation ******* 
+🤖🗣️~ Manipulação dos dados dentro das tabelas.
+
+🔹Comandos principais:
+
+1️⃣ INSERT — inserir registros
+2️⃣ UPDATE — atualizar
+3️⃣ DELETE — apagar
+
+###################################################################################################################################
+
+🎲 EXEMPLO prático comentado 🎲
+
+-- Inserindo um cliente
+INSERT INTO clientes (nome, email)
+VALUES ('Maria Silva', 'maria@email.com');
+
+-- Atualizando um cliente
+UPDATE clientes
+SET telefone = '99999-8888'
+WHERE id = 1;
+
+-- Apagando um registro
+DELETE FROM clientes WHERE id = 1;
+
+###################################################################################################################################

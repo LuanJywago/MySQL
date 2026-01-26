@@ -1,0 +1,3 @@
+Crie uma Medida DAX para somar salários.
+Crie um cartão mostrando o total de funcionários.
+Transforme a coluna data_admissao para "Ano de admissão".

@@ -1,0 +1,24 @@
+🔥 Desafio 1 — Dashboard de RH
+Crie um dashboard com:
+
+Total de funcionários
+Salário médio
+Salário por cargo
+Funcionários por ano de admissão
+
+🔥 Desafio 2 — Dashboard de Vendas
+Utilizando o sistema criado nos desafios SQL:
+
+Total vendido
+Produto mais vendido
+Valor total por produto
+Tendência mensal de vendas
+
+🔥 Desafio 3 — Parâmetro de Data
+Crie um parâmetro no Power BI para filtrar:
+
+Data inicial
+Data final
+
+Aplique o filtro ao relatório.
+

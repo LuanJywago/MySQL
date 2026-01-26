@@ -1,0 +1,3 @@
+Use DirectQuery e explique a diferença ao estagiário.
+Crie uma tabela de calendário no Power BI com DAX.
+Configure atualização automática (refresh) e explique o fluxo.

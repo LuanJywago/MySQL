@@ -1,0 +1,73 @@
+Power BI + MySQL: conceitos importantes
+
+🔹 O Power BI é usado para:
+
+Criar relatórios
+Fazer dashboards
+Conectar dados de diversas fontes
+Atualizar dados automaticamente
+
+🔹 Pontos importantes ao usar MySQL no Power BI:
+
+✔ É necessário instalar o MySQL Connector/NET para permitir a conexão
+✔ O Power BI acessa as tabelas como se fosse um “SELECT * FROM tabela”
+✔ É possível usar consultas personalizadas
+✔ O modelo do Power BI transforma os dados importados ou conectados
+
+
+🔹 Tipos de conexão no Power BI:
+
+1. Import
+
+Carrega os dados para dentro do Power BI
+Mais rápido para relatórios
+Não reflete mudanças em tempo real
+
+2. DirectQuery
+
+O Power BI consulta diretamente o MySQL a cada visualização
+Dados sempre atualizados
+Depende do desempenho do banco
+
+
+Passo a passo: Conectar MySQL ao Power BI
+
+✅ Passo 1 — Instalar o MySQL Connector
+
+Baixe o conector oficial:
+🔗 https://dev.mysql.com/downloads/connector/net/
+
+
+✅ Passo 2 — Abrir o Power BI
+
+Clique em Obter Dados
+Selecione MySQL Database
+
+
+✅ Passo 3 — Informar o servidor
+Exemplo:
+Servidor: 127.0.0.1
+Banco: empresa_db
+
+
+✅ Passo 4 — Autenticação
+Coloque:
+
+usuário (ex: estagiario)
+senha
+
+
+✅ Passo 5 — Escolha das tabelas
+
+Selecione apenas o necessário
+Ou use consulta SQL personalizada:
+
+SELECT nome, email 
+FROM clientes 
+WHERE ativo = 1;
+
+
+✅ Passo 6 — Carregar ou transformar
+
+Carregar → dados entram direto
+Transformar → abre o Power Query Editor

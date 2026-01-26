@@ -1,0 +1,42 @@
+******* DDL - Definition *******
+###################################################################################################################################
+🤖🗣️~ Usada para definir a ESTRUTURA do banco: tabelas, indices, colunas.
+
+🎯 Insert/Update/Delete
+🎯 Create/Drop/Alter
+🎯 Rename/Truncate/Merge
+🎯 Determina os usuários que terão acesso ao banco de Dados
+🎯 Garante privilégios
+🎯 Indexing (atalho, caminho mais rápido) e esquema Definition
+🎯 desc (tabela) te dá todos os detalhes dos dados da tabela que foi requerida
+
+###################################################################################################################################
+
+🎲 EXEMPLO de como é 🎲
+
+Create (database or Schema) db_name
+
+create_option (Default) {
+    Character set [=]charset_name
+    Collate [=] collation_name
+    Encryption [=] (y/n)
+}
+
+###################################################################################################################################
+
+🎲 EXEMPLO prático comentado 🎲
+
+-- Criando uma tabela
+CREATE TABLE clientes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    email VARCHAR(150)
+);
+
+-- Adicionando coluna
+ALTER TABLE clientes ADD telefone VARCHAR(20);
+
+-- Removendo tabela
+DROP TABLE clientes;
+
+###################################################################################################################################

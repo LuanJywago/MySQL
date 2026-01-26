@@ -1,0 +1,25 @@
+11. Chave Composta
+Crie uma tabela chamada projetos_funcionarios:
+
+id_funcionario
+id_projeto
+data_entrada
+→ Configure PRIMARY KEY (id_funcionario, id_projeto)
+
+12. Crie Tabelas Relacionadas
+Crie também a tabela projetos:
+
+id_projeto (chave primária)
+nome
+prazo
+
+13. JOIN Simples
+Consulta que mostra:
+
+nome do funcionário
+nome do projeto
+
+14. LEFT JOIN
+Mostre todos os funcionários, mesmo os que não estão alocados em projetos.
+15. RIGHT JOIN ou INNER JOIN
+Mostre todos os projetos com seus funcionários alocados.
