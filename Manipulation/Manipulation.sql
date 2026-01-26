@@ -81,3 +81,9 @@ select * from bankClient;
 update bankClient
     set UFF = 'MG'
     where Nome = "Fulano"
+
+-- Ordenando
+Select Id_account
+from bankAccounts
+ORDER BY amount LIMIT 5; -- define o limite de 5 dados
+

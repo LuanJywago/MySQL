@@ -104,3 +104,37 @@ SELECT concat(Fname, ' ', Lname) as Complete_name, Salary, round(Salary*1.1, 2) 
     from employee e, works_on as w, project as p
     where (e.Ssn = w.Essn and w.Pno=p.Pnumber and p.Pname='ProductX');
 
+-- Ordenando de forma descendente partir do numero do departamento
+SELECT Fname, Lname, Dno from employee
+ORDER BY(Dno) DESC;
+
+-- Ordenando a partir do numero do departamento
+use company_constraints;
+select * from employee
+order by Dno;
+
+-- Nome do departamento, nome do gerente do departamento e endereço
+select distinct d.Dname, concat(e.Fname, " ", e.Lname) as Manager, Address -- distinct usado para evitar informação duplicada
+    from departament as d, employee as e, works_on as w, project as p
+    where (d.Dnumber = e.Dno and e.Ssn = d.Mgr_ssn and w.Pno = p.Pnumber;)
+    order by d.Dname, e.Lname, e.Fname;
+
+-- Agrupamento de registros (SALARIO MÉDIO PELO Dno)
+SELECT Dno, Count(*) AVG(Salary)
+from employee
+Group by Dno;
+
+-- Agrupamento com filtro de pesquisa
+Select * from employee, departament
+where Dno = Dnumber and Dname = "Research";
+
+Select Dno, count(*) as Number_of_employee, round(avg(Salary),2) as Dalary_avg
+from employee
+GROUP BY Dno;
+
+-- Usando o HAVING para criar a estrutura se COUNT > 2
+SELECT Pnumber, Pname, COUNT(*)
+FROM PROJECT, works_on
+WHERE Pnumber = Pno
+GROUP BY Pnumber, Pname
+HAVING COUNT (*) > 2;

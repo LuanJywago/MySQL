@@ -66,3 +66,31 @@ SELECT concat(Fname, '', Minit, '', Lname)
     AS Complete_name
     FROM employee;
 
+🔹 QUERYS
+- É feita pela seguinte estrutura de clausulas:
+
+SELECT <lista de atributos>
+FROM <lista da tabela>
+[WHERE <condição>]
+[ORDER BY <lista da tabela>]
+
+[]*: Significa que pode ou não conter essa informação**
+ASC//DESC: Significa que vai do menor para o maior ou visse e versa
+- Define se é ascendente ou descendente.
+
+
+🔹 Agrupamento de registros
+
+COUNT: registros; (usa-se AS)
+SUM: somatória;
+MIN: valor minimo do atributo;
+MAX: valor maximo do atributo;
+AVARAGE: valor médio dos atributos;
+GROUP BY: Agrupamento de registros.
+
+
+🔹 HAVING Steatment
+
+SELECT: Seleciona tabela e atributos;
+GROUP BY: Grupo de valores;
+HAVING: Filtragem dos grupos.
