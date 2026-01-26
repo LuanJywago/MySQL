@@ -33,7 +33,7 @@ como MySQL, PostgreSQL ou SQL Server,
 - Reclama caso necessário alguma função ou instrução requerida;
 - Ex: SELECT now() -> faltou o comando dentro do parenteses, então dá errp na instrução;
 - SELECT, FROM, WHERE, ORDER BY, GROUP BY, HAVING...
-- As Clasulas são funções que definem as instruções (Steatments). As instruções por sua vez retornam os registros do banco de dados
+- As Clasulas são funções que definem as instruções (Statements). As instruções por sua vez retornam os registros do banco de dados
 
 🔹 Distinct
 - Evita redundancia de dados.
@@ -89,8 +89,23 @@ AVARAGE: valor médio dos atributos;
 GROUP BY: Agrupamento de registros.
 
 
-🔹 HAVING Steatment
+🔹 HAVING Statement
 
 SELECT: Seleciona tabela e atributos;
 GROUP BY: Grupo de valores;
 HAVING: Filtragem dos grupos.
+
+🔹CASE Statement
+
+- Forma de mapeamento
+
+UPDATE <tabela>
+SET = <Parametro>
+CASE WHEN <filtro1> THEN <Filtro2>
+CASE WHEN <filtro1> THEN <Filtro2>
+CASE WHEN <filtro1> THEN <Filtro2>
+...
+ELSE <parametro>;
+FROM <tabela> [Usado as vezes]
+
+🔹INNER JOIN
