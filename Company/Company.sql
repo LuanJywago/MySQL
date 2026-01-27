@@ -138,3 +138,74 @@ FROM PROJECT, works_on
 WHERE Pnumber = Pno
 GROUP BY Pnumber, Pname
 HAVING COUNT (*) > 2;
+
+
+-- DESATIVE O SAFE MODE DO WORKBENCH:
+-- 1. PREFERENCIAS -> SQL EDITOR -> OTHER -> SAFE UPDATES (desmarca e reinicia o programa)
+select concat(Fname, ' ', Lname) as Full_name, Salary, departament from employee;
+update employee
+set salary =
+    case
+        when Dno = 5 then Salary+ 2000
+        when Dno = 4 then Salary+ 1500
+        when Dno = 1 then Salary+ 3000
+        else Salary + 0
+    end;
+-- Vizualizar as tabelas atualizadas novamente
+select concat(Fname, ' ', Lname) as Full_name, Salary, departament from employee;
+
+--JOIN STATEMENTS
+-- JOIN
+select * from employee -- sem atributo, ele mescla os atributos da lista entre as duas
+JOIN works_on;
+
+select * from employee, works_on
+where Ssn = Essn -- vai ter a mesma coisa, mas menos intuitivo e pode dar problema de match entre as tabelas
+
+-- JOIN ON --> INNER JOIN  
+Select Fname, Lname, Address
+from (employee join departament on Dno = Dnumber) -- retorna uma tabela como resultado de uma tabela para ser recuperada
+where Dname = "Research" -- recupera as informações mas aplica um filtro em cima delas
+-- acresce esse fator de filtro para pesquisar todas as tabelas, mas retornar apenas o dado filtrado entre essas tabelas
+
+select * from employee -- não especificou atributo, logo, vai vir tudo
+join works_on
+on Ssn = Essn -- colocou uma forma de junção entre elas
+
+-- para achar os dados se causar dificuldades
+select * from dept_location; -- Dlocation e Dnumber
+select * from departament; -- Dname, Dept_create_date
+
+Select Dname, Dept_create_date, as StartDate, Dlocation as Location 
+from departament join dept_location
+USING (Dnumber) -- atributos em comuns nas tabelas. Se der prego, use ON mesmo
+ORDER BY StartDate; -- ordena em forma ascendente
+
+-- CROSS JOIN (LIVRO: LEARNING SQL)
+-- Produto cartesiano
+-- Sempre determinar o tipo de JOIN
+
+select * from employee 
+cross join dependent; -- Mostra todos os dependentes existentes dentro do banco de dados
+
+
+-- JOINS COM 3 TABELAS --
+--Project, works_on e employee (ordem das tabelas não necessariamente importa)
+select concat(Fname,' ', Lname) as Full_name, Dno, Pname, Pno, Plocation from employee 
+    inner join works_on on Ssn = Essn
+    inner join project on Pno = Pnumber
+    inner join departament on Dno = Dnumber
+    order by Pnumber;
+
+select concat(Fname,' ', Lname) as Full_name, Dno as DeptNumber, Pname as ProjectName, Pno as ProjectNumber, Plocation as Location from employee 
+    inner join works_on on Ssn = Essn
+    inner join project on Pno = Pnumber
+    where Pname like 'Project%'
+    order by Pnumber;
+
+-- departament, dept_location e employee
+SELECT Dno, Dname, concat(Fname,' ', Lname) as Manager, Salary, round(Salary*1.05) as bonus from departament
+    inner join dept_location using(Dnumber)
+    inner join employee on Ssn = Mrg_ssn
+    group by Dnumber -- agrupamento
+    having count(*)>1; -- condição em cima do agrupamento (grupo)

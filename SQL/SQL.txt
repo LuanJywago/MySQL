@@ -108,4 +108,77 @@ CASE WHEN <filtro1> THEN <Filtro2>
 ELSE <parametro>;
 FROM <tabela> [Usado as vezes]
 
+Exemplo SEM O CASE:
+
+|   Select year, month                            
+|   sum(precipitation) as tornado_precipitation   
+|   from station_data                             
+|   where tornado = 1                             
+|   group by year, month                          
+
+
+EXEMPLO COM O CASE:
+- Apenas uma query para varias;
+- Usei SUM, mas qualquer outro operador pode ser utilizado.
+
+|   SELECT year, month
+|   SUM(case when tornado = 1 then precipitation else 0 END) as tornado_precipitation
+|   SUM(Case WHEN tornado = 0 THEN precipitation ELSE 0 END) as non_tornado_precipitation
+|   FROM station_data
+|   GROUP BY year, month
+
+
 🔹INNER JOIN
+
+- Comando usado para combinar dados de das ou mais tabelas;
+- Retorna somente os registros que possuem correspondencia entre elas;
+- Evita duplicação de dados;
+- Separa informações em tabelas;
+- Junta tudo apenas quando necessário;
+- Evita redundâncias.
+
+Exemplo com 2 tabelas:
+SELECT clientes.nome, pedidos.id_pedido, pedidos.valor
+FROM clientes
+INNER JOIN pedidos
+    ON clientes.id_cliente = pedidos.id_cliente;
+
+Exemplo com 3 tabelas:
+
+SELECT f.nome, p.nome_projeto
+FROM funcionarios f
+INNER JOIN projetos_funcionarios pf
+    ON f.id_funcionario = pf.id_funcionario
+INNER JOIN projetos p
+    ON pf.id_projeto = p.id_projeto;
+
+- LEFT JOIN: Tudo da esquerda + correspondencia da direita;
+
+- RIGHT JOIN: Tudo da dierita + correspondencia da esquerda;
+
+- FULL JOIN: Tudo de ambos os lados (em bancos que suportam esse comando!)
+
+- CROSS JOIN ****ESTUDAR DEPOIS****
+
+
+🔹JOIN STATEMENT:
+
+SELECT <atributes list>
+FROM <table 1> JOIN <table 2> -- cross join
+ON <first_table>.commom_attribute = <second_table>.commom_attribute; -- seleciona os comandos em comum entre as tabelas para fazer a relação das tabelas
+(ou usa esse:) USING (atributo com o mesmo nome, mas em tabelas diferentes)
+
+|   SELECT e.fname, e.Lname, d.name -- seleciona os dados necessários da tabela employee e departament
+|   FROM employee e JOIN departament d - mostra qual tabela se unir com qual
+|   ON e.dept_id = d.dept_id - mostra a condição de junção "ON" para unir essas tabelas, evitando redundâncias com dados que existem em ambas as tabelas
+
+🔹INNER JOIN COM +2 tabelas
+
+Select a.account_id, c.fed_id, e.fed_id, e.fname, e.Lname
+from account a 
+inner join customer c 
+    on a.cust_id = c.cust_id -- fez a junção e tem a tabela resultante
+    inner join employee e
+    on a.open_emp_id = e.open_emp_id -- pega a resultante e cria uma resultante.V2
+where c.cust_type_cd = "B"; -- filtro para especificação da resultante.V2
+
