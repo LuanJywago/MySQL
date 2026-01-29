@@ -1,211 +1,230 @@
--- Criando schema ou banco de dados
-CREATE SCHEMA if not exists company;
-
--- Fazendo a chamada para usar um schema ou BD 
+DROP DATABASE IF EXISTS company;
+CREATE DATABASE company CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE company;
 
--- Criando as tabelas do schema ou BD
-CREATE TABLE company.employee(
-    Fname VARCHAR(15) NOT NULL,
-    Minit char,
-    Lname VARCHAR(15) NOT NULL,
-    Ssn char(9) NOT NULL,
-    Bdate DATE,
-    address VARCHAR(30),
-    Sex char,
-    Salary decimal(10, 2),
-    Super_ssl char (9),
-    Dno INT NOT NULL,
-    primary key (Ssn)
+-- Criando as tabelas
+-- tabela employee
+CREATE TABLE employee(
+    Fname       VARCHAR(15) NOT NULL,
+    Minit       CHAR(1),
+    Lname       VARCHAR(15) NOT NULL,
+    Ssn         CHAR(9)     NOT NULL,
+    Bdate       DATE,
+    Address     VARCHAR(60),
+    Sex         CHAR(1),
+    Salary      DECIMAL(10,2),
+    Super_ssn   CHAR(9),
+    Dno         INT,
+    PRIMARY KEY (Ssn)
 );
 
+-- tabela departament
 CREATE TABLE departament(
-    Dname VARCHAR(15) NOT NULL,
-    Dnumber INT NOT NULL,
-    Mgr_ssn char(9),
-    Mgr_start_date DATE,
-    primary key (Dnumber),
-    Unique (Dname),
-    foreign key(Mgr_ssn) references employee(Ssn)
+    Dname           VARCHAR(15) NOT NULL,
+    Dnumber         INT NOT NULL,
+    Mgr_ssn         CHAR(9),
+    Mgr_start_date  DATE,
+    PRIMARY KEY (Dnumber),
+    UNIQUE (Dname)
 );
 
+-- tabela dept_location
 CREATE TABLE dept_location(
-    Dnumber int not null,
-    Dlocation varchar(20) not null,
-    primary key(Dnumber, Dlocation),
-    foreign key (Dnumber) references departament(Dnumber)
+    Dnumber     INT NOT NULL,
+    Dlocation   VARCHAR(20) NOT NULL,
+    PRIMARY KEY(Dnumber, Dlocation),
+    CONSTRAINT fk_dept_location_departament
+        FOREIGN KEY (Dnumber) REFERENCES departament(Dnumber)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
+-- tabela project
 CREATE TABLE project(
-    Pname varchar(20) not null,
-    Pnumber int not null,
-    Plocation varchar(15),
-    Dnum int not null,
-    primary key (Pnumber),
-    unique (Pname),
-    foreign key (Dnumber) references departament(Dnumber)
+    Pname       VARCHAR(20) NOT NULL,
+    Pnumber     INT NOT NULL,
+    Plocation   VARCHAR(15),
+    Dnum        INT NOT NULL,
+    PRIMARY KEY (Pnumber),
+    UNIQUE (Pname),
+    CONSTRAINT fk_project_departament
+        FOREIGN KEY (Dnum) REFERENCES departament(Dnumber)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
 );
 
+-- tabela works_on
 CREATE TABLE works_on(
-    Essn char(9) not null,
-        Pno int not null,
-        Hours decimal(3,1) not null,
-        primary key (Essn, Pno), --- comentario
-        foreign key (Essn) references employee(Ssn),
-        foreign key (Pno) references project(Pnumber)
+    Essn    CHAR(9)     NOT NULL,
+    Pno     INT         NOT NULL,
+    Hours   DECIMAL(3,1) NOT NULL,
+    PRIMARY KEY (Essn, Pno),
+    CONSTRAINT fk_works_on_employee
+        FOREIGN KEY (Essn) REFERENCES employee(Ssn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_works_on_project
+        FOREIGN KEY (Pno) REFERENCES project(Pnumber)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
+-- tabela dependent
 CREATE TABLE dependent(
-    Essn char(9) not null,
-    Dependet_name varchar(15) not null,
-    sex char,
-    Bdate date,
-    Relationship varchar(9),
-    primary key (Essn, Dependet_name), --dupla chave primaria
-    foreign key (Essn) references employee(Ssn)
+    Essn            CHAR(9)     NOT NULL,
+    Dependent_name  VARCHAR(15) NOT NULL,
+    Sex             CHAR(1),
+    Bdate           DATE,
+    Relationship    VARCHAR(12),
+    PRIMARY KEY (Essn, Dependent_name),
+    CONSTRAINT fk_dependent_employee
+        FOREIGN KEY (Essn) REFERENCES employee(Ssn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
--- Alterando uma tabela colocando uma fk NOVA
+-- Alterando tabela para colocar fk nova
 ALTER TABLE employee
-    add constraint fk_employee
-    foreign key (Super_ssn) references employee (Ssn)
-    in delete set null on update cascade;-- evento em cascata, atualização automatica que acontecem nas filhas baseadas no grau de parentesco
+    ADD CONSTRAINT fk_employee_supervisor
+    FOREIGN KEY (Super_ssn) REFERENCES employee (Ssn)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
 
--- modificar uma cosntraint
-ALTER TABLE departament drop constraint departament_ibfk_1;
-alter table departament
-    add cosntraint fk_departament foreign key(Mrg_ssn)
-    references employee(Ssn)
-    on update cascade
+-- modificar uma constraint
+ALTER TABLE departament
+    ADD CONSTRAINT fk_departament_manager
+    FOREIGN KEY (Mgr_ssn) REFERENCES employee(Ssn)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
+
+ALTER TABLE employee
+    ADD CONSTRAINT fk_employee_departament
+    FOREIGN KEY (Dno) REFERENCES departament(Dnumber)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL;
 
 -- persistencia de dados, colocando dados dentro da tabela employee
-insert into employee
-values
-    ('John','B','Smithy',123456289,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455555, null);
-    ('John','B','Smithr',173456789,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455355, null);
-    ('John','B','Smithw',123453789,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455955, null);
-    ('John','B','Smithq',123451789,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455855, null);
-    ('John','B','Smitha',123446789,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455155, null);
-    ('John','B','Smithu',123466789,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455455, null);
-    ('John','B','Smithj',127456789,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455655, null);
-    ('John','B','Smithg',123456389,'731-fOUNDREN-hOUSTON-tx','M',300000,33344455255, null);
+INSERT INTO employee (Fname, Minit, Lname, Ssn, Bdate, Address, Sex, Salary, Super_ssn, Dno)
+VALUES
+('John','B','Smithy','123456289',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('Peter','B','Smithr','173456789',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('luck','B','Smithw','123453789',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('John','B','Smithq','123451789',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('John','B','Smitha','123446789',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('John','B','Smithu','123466789',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('John','B','Smithj','127456789',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL),
+('John','B','Smithg','123456389',NULL,'731-fOUNDREN-hOUSTON-tx','M',300000.00,NULL,NULL);
 
--- Definir um gasto de 11% para o INSS a partir do salário do funcionário
-SELECT Fname, Lname, Salary * 0.011 from employee;
+-- Definir gasto de 11% para o INSS a partir do salario do funcionario
+SELECT Fname, Lname, Salary * 0.11 FROM employee;
 
--- Refinando o INSS para mostrar uma tabela bonita
-SELECT Fname, Lname, Salary * 0,011 as INSS from employee;
+-- Refinando o INSS
+SELECT Fname, Lname, Salary * 0.11 AS INSS FROM employee;
 
--- Refinando ainda mais para mostrar a tabela e o valor arredondado dentro dela
-SELECT Fname, Lname, Salary, round(Salary * 0.011, 2) as INSS from employee;
+-- Refinando ainda mais para mostrar nome na tabela e valor arredondado em 2 casas
+SELECT Fname, Lname, Salary, ROUND(Salary * 0.11, 2) AS INSS FROM employee;
 
--- Definir um aumento de salario dos gerentes associados a um projeto X
-SELECT concat(Fname, ' ', Lname) as Complete_name, Salary, round(Salary*1.1, 2) as increased_salary
-    from employee e, works_on as w, project as p
-    where (e.Ssn = w.Essn and w.Pno=p.Pnumber and p.Pname='ProductX');
+-- Definir um aumento de salário dos gerentes associados a um projeto X
+SELECT CONCAT(Fname, ' ', Lname) AS Complete_name, Salary, ROUND(Salary*1.1, 2) AS increased_salary
+FROM employee e, works_on w, project p
+WHERE (e.Ssn = w.Essn AND w.Pno = p.Pnumber AND p.Pname = 'ProductX');
 
--- Ordenando de forma descendente partir do numero do departamento
-SELECT Fname, Lname, Dno from employee
-ORDER BY(Dno) DESC;
+-- Ordenando de forma descendente a partir do numero do departamento
+SELECT Fname, Lname, Dno FROM employee
+ORDER BY Dno DESC;
 
--- Ordenando a partir do numero do departamento
-use company_constraints;
-select * from employee
-order by Dno;
+USE company;
 
--- Nome do departamento, nome do gerente do departamento e endereço
-select distinct d.Dname, concat(e.Fname, " ", e.Lname) as Manager, Address -- distinct usado para evitar informação duplicada
-    from departament as d, employee as e, works_on as w, project as p
-    where (d.Dnumber = e.Dno and e.Ssn = d.Mgr_ssn and w.Pno = p.Pnumber;)
-    order by d.Dname, e.Lname, e.Fname;
+SELECT * FROM employee
+ORDER BY Dno;
 
--- Agrupamento de registros (SALARIO MÉDIO PELO Dno)
-SELECT Dno, Count(*) AVG(Salary)
-from employee
-Group by Dno;
+SELECT DISTINCT d.Dname, CONCAT(e.Fname, ' ', e.Lname) AS Manager, e.Address
+FROM departament d
+JOIN employee e ON e.Ssn = d.Mgr_ssn
+ORDER BY d.Dname, e.Lname, e.Fname;
 
--- Agrupamento com filtro de pesquisa
-Select * from employee, departament
-where Dno = Dnumber and Dname = "Research";
-
-Select Dno, count(*) as Number_of_employee, round(avg(Salary),2) as Dalary_avg
-from employee
+SELECT Dno, COUNT(*), AVG(Salary)
+FROM employee
 GROUP BY Dno;
 
--- Usando o HAVING para criar a estrutura se COUNT > 2
-SELECT Pnumber, Pname, COUNT(*)
-FROM PROJECT, works_on
-WHERE Pnumber = Pno
-GROUP BY Pnumber, Pname
-HAVING COUNT (*) > 2;
+SELECT * FROM employee e, departament d
+WHERE e.Dno = d.Dnumber AND d.Dname = 'Research';
 
+-- Agrupamento de registros
+SELECT Dno, COUNT(*) AS Number_of_employee, ROUND(AVG(Salary),2) AS Salary_avg
+FROM employee
+GROUP BY Dno;
+
+SELECT p.Pnumber, p.Pname, COUNT(*) 
+FROM project p, works_on w
+WHERE p.Pnumber = w.Pno
+GROUP BY p.Pnumber, p.Pname
+HAVING COUNT(*) > 2;
+
+SELECT CONCAT(e.Fname, ' ', e.Lname) AS Full_name, e.Salary, d.Dname AS departament
+FROM employee e
+LEFT JOIN departament d ON e.Dno = d.Dnumber;
 
 -- DESATIVE O SAFE MODE DO WORKBENCH:
 -- 1. PREFERENCIAS -> SQL EDITOR -> OTHER -> SAFE UPDATES (desmarca e reinicia o programa)
-select concat(Fname, ' ', Lname) as Full_name, Salary, departament from employee;
-update employee
-set salary =
-    case
-        when Dno = 5 then Salary+ 2000
-        when Dno = 4 then Salary+ 1500
-        when Dno = 1 then Salary+ 3000
-        else Salary + 0
-    end;
--- Vizualizar as tabelas atualizadas novamente
-select concat(Fname, ' ', Lname) as Full_name, Salary, departament from employee;
+UPDATE employee
+SET Salary =
+    CASE
+        WHEN Dno = 5 THEN Salary + 2000
+        WHEN Dno = 4 THEN Salary + 1500
+        WHEN Dno = 1 THEN Salary + 3000
+        ELSE Salary
+    END;
 
---JOIN STATEMENTS
--- JOIN
-select * from employee -- sem atributo, ele mescla os atributos da lista entre as duas
-JOIN works_on;
+SELECT CONCAT(Fname, ' ', Lname) AS Full_name, Salary, Dno FROM employee;
 
-select * from employee, works_on
-where Ssn = Essn -- vai ter a mesma coisa, mas menos intuitivo e pode dar problema de match entre as tabelas
+-- JOIN usando ON
+SELECT * FROM employee
+JOIN works_on ON Ssn = Essn;
 
--- JOIN ON --> INNER JOIN  
-Select Fname, Lname, Address
-from (employee join departament on Dno = Dnumber) -- retorna uma tabela como resultado de uma tabela para ser recuperada
-where Dname = "Research" -- recupera as informações mas aplica um filtro em cima delas
--- acresce esse fator de filtro para pesquisar todas as tabelas, mas retornar apenas o dado filtrado entre essas tabelas
+SELECT * FROM employee, works_on
+WHERE Ssn = Essn;
 
-select * from employee -- não especificou atributo, logo, vai vir tudo
-join works_on
-on Ssn = Essn -- colocou uma forma de junção entre elas
+SELECT Fname, Lname, Address
+FROM (employee JOIN departament ON Dno = Dnumber)
+WHERE Dname = 'Research';
 
--- para achar os dados se causar dificuldades
-select * from dept_location; -- Dlocation e Dnumber
-select * from departament; -- Dname, Dept_create_date
+SELECT * FROM dept_location;
+SELECT * FROM departament;
 
-Select Dname, Dept_create_date, as StartDate, Dlocation as Location 
-from departament join dept_location
-USING (Dnumber) -- atributos em comuns nas tabelas. Se der prego, use ON mesmo
-ORDER BY StartDate; -- ordena em forma ascendente
+-- JOIN com ON e usando um atributo USING (quando dois dados são tidos em comum, usa-se o using as vezes)
+SELECT Dname, Mgr_start_date AS StartDate, Dlocation AS Location
+FROM departament
+JOIN dept_location USING (Dnumber)
+ORDER BY StartDate;
 
--- CROSS JOIN (LIVRO: LEARNING SQL)
--- Produto cartesiano
--- Sempre determinar o tipo de JOIN
+-- Cross join
+SELECT * FROM employee
+CROSS JOIN dependent;
 
-select * from employee 
-cross join dependent; -- Mostra todos os dependentes existentes dentro do banco de dados
+-- INNER JOIN COM MAIS DE 2 TABELAS
+-- Faz-se um inner join entre uma tabela e outra (criando uma resultante)
+-- A resultante dessas tabelas são unidas novamente para criar uma resultante V2
+SELECT CONCAT(e.Fname,' ', e.Lname) AS Full_name, e.Dno, p.Pname, w.Pno, p.Plocation
+FROM employee e
+INNER JOIN works_on w ON e.Ssn = w.Essn
+INNER JOIN project p ON w.Pno = p.Pnumber
+INNER JOIN departament d ON e.Dno = d.Dnumber
+ORDER BY p.Pnumber;
 
+-- Resultante com filtro de pesquisa para o nome do projeto
+SELECT CONCAT(e.Fname,' ', e.Lname) AS Full_name, e.Dno AS DeptNumber, p.Pname AS ProjectName, w.Pno AS ProjectNumber, p.Plocation AS Location
+FROM employee e
+INNER JOIN works_on w ON e.Ssn = w.Essn
+INNER JOIN project p ON w.Pno = p.Pnumber
+WHERE p.Pname LIKE 'Project%'
+ORDER BY p.Pnumber;
 
--- JOINS COM 3 TABELAS --
---Project, works_on e employee (ordem das tabelas não necessariamente importa)
-select concat(Fname,' ', Lname) as Full_name, Dno, Pname, Pno, Plocation from employee 
-    inner join works_on on Ssn = Essn
-    inner join project on Pno = Pnumber
-    inner join departament on Dno = Dnumber
-    order by Pnumber;
+-- filtro de pesquisa para contador maior que 1 em cima da resultante definitiva dos INNER JOINS
+SELECT d.Dnumber, d.Dname, CONCAT(m.Fname,' ', m.Lname) AS Manager, m.Salary, ROUND(m.Salary*1.05,2) AS bonus
+FROM departament d
+INNER JOIN dept_location dl USING (Dnumber)
+INNER JOIN employee m ON m.Ssn = d.Mgr_ssn
+GROUP BY d.Dnumber, d.Dname, Manager, m.Salary, bonus
+HAVING COUNT(*) > 1;
 
-select concat(Fname,' ', Lname) as Full_name, Dno as DeptNumber, Pname as ProjectName, Pno as ProjectNumber, Plocation as Location from employee 
-    inner join works_on on Ssn = Essn
-    inner join project on Pno = Pnumber
-    where Pname like 'Project%'
-    order by Pnumber;
-
--- departament, dept_location e employee
-SELECT Dno, Dname, concat(Fname,' ', Lname) as Manager, Salary, round(Salary*1.05) as bonus from departament
-    inner join dept_location using(Dnumber)
-    inner join employee on Ssn = Mrg_ssn
-    group by Dnumber -- agrupamento
-    having count(*)>1; -- condição em cima do agrupamento (grupo)

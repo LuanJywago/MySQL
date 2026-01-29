@@ -95,7 +95,7 @@ SELECT: Seleciona tabela e atributos;
 GROUP BY: Grupo de valores;
 HAVING: Filtragem dos grupos.
 
-🔹CASE Statement
+🔹 CASE Statement
 
 - Forma de mapeamento
 
