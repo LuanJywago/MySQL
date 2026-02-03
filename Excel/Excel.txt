@@ -43,3 +43,15 @@ CONGELAMENTO DE CÉLULAS ($ ou F4)
 ATIVIDADES CONCLUIDAS
 =CONT.SE(intervalo,critério)
 =CONT.SE(intervalo;"Done")
+
+=SUBTOTAL(operação, regra)
+- =SUBTOTAL(103, [2]) conta quantas células não vazias existem na coluna/intervalo referenciado por [2], desconsiderando as linhas ocultas (tanto por filtro quanto ocultadas manualmente).
+- 103: Qual operação será usada
+- regra: [2] indica uma coluna especifica
+- regra: B:B indica toda a coluna B
+- regra: NomeTabela[Quantidade] te dá a coluna "Quantidade" da tabela
+
+SUBTRAÇÃO
+=celula1 - celula2
+-exemplo: =L21-L30
+
