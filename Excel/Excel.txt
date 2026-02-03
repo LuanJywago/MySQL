@@ -1,0 +1,45 @@
+Sinal de "="
+- Diz para a planilha que irá começar a receber um comando
+- Da pra fazer clicando na celula e clicndo em outra
+- Imprime os dados da celula selecionada
+
+=SOMA(intervalo)
+- Soma todos os dados das celulas em intervalo
+- Ex: =SOMA(D2:D6) -> Pega os dados da célula D2 ate a D6
+
+:
+- Seleciona um intervalo inteiro
+- Da pra usar selecionando as celulas arrastando
+
+;
+- Seleciona os intervalos a serem utilizados (especificas)
+- Da pra fazer segurando a tecla CTRL
+
+Combinação de intervalos/células : e ;
+- =SOMA(D2:D5;E2:E6)
+
+=PY
+- Usa o comando para acessar a função de Python
+- Permite que voce crie o código em uma célula
+- a célula normal vira uma CÉLULA Python
+- EX:
+- =PY("import pandas as pd; df=pd.DataFrame(xl('A1:C10')); df.describe()")
+- =PY("sum([1,2,3,4])")
+
+=ALEATORIOENTRE
+- Usa parametro (inferior;Superior)
+- Retorna um valor aleatório entre os valores especificados
+
+CTRL + C, CTRL + ALT + V
+- Capaz de, quando colar uma informação, voce altere dados de numero (Inicio - Numero - Formato da célula (a definir))
+
+CONGELAMENTO DE CÉLULAS ($ ou F4)
+- "$" usado antes e/ou depois da letra da celula
+- =SOMA($D$4:D4) - não vai movimentar a célula em caso de arrastar ela
+
+=CONT.VALORES(valor1,valor2)
+- Te da uma contagem de quantas atividades tem ao todo
+
+ATIVIDADES CONCLUIDAS
+=CONT.SE(intervalo,critério)
+=CONT.SE(intervalo;"Done")
