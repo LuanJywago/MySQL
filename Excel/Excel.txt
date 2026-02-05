@@ -55,3 +55,24 @@ SUBTRAÇÃO
 =celula1 - celula2
 -exemplo: =L21-L30
 
+ETL
+- Extract Transform & Load;
+- Primeira coisa é extrair, apontar que vai utilizar ele;
+- Passa por um caminho, uma direção que vai ser onde ele vai ser jogado//carregado;
+- Para que ele chegue "redondo e utilizavel", precisa passar por transformações no meio desse caminho ;
+- Cada transformação faz com que ele seja em etapas, precisa salvar em etapas para ficar registrado caso suja alterações.
+--PASSO A PASSO
+1. Clique na coluna "Dados"
+2. Clique em "Obter Dados" e selecione a planilha
+3. Clique em transformar dados (vai abrir o PQ - Power Query, para poder tratar os dados)
+4. (visualização do codigo M) clique na pagina inicial - Editor avançado e veja o código M 
+5. Apos fazer as edições, clique em fechar e carregar
+6. Fechar e carregar para...
+7. Salve e seja feliz.
+
+MÉTODO ABCDE - Organização de Dashboards
+A - Assets (recursos de audio, imagens, icones, recursos de apoio...);
+B - Bases (Dados para gerar a dashboard principal ou outras medidas);
+C - Cálculos (meio de campo que processa dados para transformar em informação);
+D - Dashboard (Painel visual);
+E - Extras 
