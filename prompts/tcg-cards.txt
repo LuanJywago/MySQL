@@ -1,0 +1,28 @@
+## PROMPTS (ação, contexto e informações)
+
+create a table script to create a table in postgresql 
+
+the first table is a table to save a pokemon tcg card
+the second table is a table to save collections set
+connect to tables with foreign key
+
+first table: tbl_cards
+- id
+- hp
+- name
+- type
+- stage
+- info
+- attack
+- damage
+- weak
+- ressis.
+- retreat
+- cardNumberInCollection
+
+second table: tbl_collections
+- id
+- collectionSetName
+- release Date
+- totalCardsInCollection
+
