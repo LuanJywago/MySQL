@@ -82,3 +82,14 @@ Dado x informação
 - informação: É o dado interpretado e com significado, algo que pode ser visual;
 - A diferença entre elas: Dado é a matéria-prima, enquanto a informação é o dado que faz sentido.
 
+Descrições para o Excel
+- "SUM": "soma os valores de um intervalo",
+- "AVERAGE": "calcula a média de um intervalo de células",
+- "IF": "realiza uma condição lógica",
+- "CONCATENATE": "combina textos de diferentes células"
+
+Descrições de contagem
+- "COUNT": "conta apenas células com números",
+- "COUNTBLANK": "conta todas as células vazias",
+- "COUNTIF": "conta células que atendem a um critério específico",
+- "COUNTIFS": "conta células que atendem a múltiplos critérios"
