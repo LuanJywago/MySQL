@@ -76,3 +76,9 @@ B - Bases (Dados para gerar a dashboard principal ou outras medidas);
 C - Cálculos (meio de campo que processa dados para transformar em informação);
 D - Dashboard (Painel visual);
 E - Extras 
+
+Dado x informação
+- Dado: Fato bruto, sem contexto;
+- informação: É o dado interpretado e com significado, algo que pode ser visual;
+- A diferença entre elas: Dado é a matéria-prima, enquanto a informação é o dado que faz sentido.
+
