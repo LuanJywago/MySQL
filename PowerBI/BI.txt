@@ -1,0 +1,8 @@
+BI & Data Science
+- Descritiva: O que aconteceu?
+- Diagnóstica: Por que aconteceu?
+- Preditiva: O que vai acontecer?
+- Prescritivo: O que fazer?
+
+SCORECARD
+- Analizar as métricas e dados da equipe mediante o gestor

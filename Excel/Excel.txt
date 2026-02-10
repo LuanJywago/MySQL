@@ -57,6 +57,8 @@ SUBTRAÇÃO
 
 ETL
 - Extract Transform & Load;
+
+
 - Primeira coisa é extrair, apontar que vai utilizar ele;
 - Passa por um caminho, uma direção que vai ser onde ele vai ser jogado//carregado;
 - Para que ele chegue "redondo e utilizavel", precisa passar por transformações no meio desse caminho ;
