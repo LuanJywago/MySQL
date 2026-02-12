@@ -6,3 +6,26 @@ BI & Data Science
 
 SCORECARD
 - Analizar as métricas e dados da equipe mediante o gestor
+
+KAGGLE
+- Faça o cadastro nesta plataforma
+- Ela possui datasets bons para a prática em Data Analyst
+
+
+OBSERVAÇÃO IMPORTANTE !!!!!!!
+- Muitas das vezes, caso o arquivo seja CSV ou XLM, XLMS... por aí
+ele vai apresentar uma falha de reconhecimento nas vírguas e ponto final
+- Voê vai precisar abrir como Bloco de notas (a tabela)
+- Faça um sistema de pesquisa (CTRL + F)
+- Clique na setinha do lado de localizar
+- Localize: o que for , troca por ; e . por ,
+- Dessa forma a tabela, quando for para o BI, será reconhecida e bem processada com as pontuações adequadas.
+
+
+POWER QUERY
+- Ferramenta de transformação e preparação de dados
+- Usado bastante para fazer processo ETL
+- Permite se conectar a diversas fontes de dados, transformem as informações e carreguem em diferentes destinos
+- A interface dele facilita a manipulação de dados sem necessidade de escrever um código
+- É possivel transformar, filtrar, remover colunas, mesclar tabelas e mais
+- Utiliza código na linguagem M que pode ser ajustado manualmente para transformações mais avançadas.
