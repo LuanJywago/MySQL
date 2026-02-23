@@ -29,3 +29,4 @@ POWER QUERY
 - A interface dele facilita a manipulação de dados sem necessidade de escrever um código
 - É possivel transformar, filtrar, remover colunas, mesclar tabelas e mais
 - Utiliza código na linguagem M que pode ser ajustado manualmente para transformações mais avançadas.
+
