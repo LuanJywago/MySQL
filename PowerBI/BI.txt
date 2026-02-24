@@ -30,3 +30,27 @@ POWER QUERY
 - É possivel transformar, filtrar, remover colunas, mesclar tabelas e mais
 - Utiliza código na linguagem M que pode ser ajustado manualmente para transformações mais avançadas.
 
+
+KPI
+- Key Performance Indicator
+- Verifica o progresso e o quanto a empresa/as coisas estão nos trilhos
+- Medem essa forma variando de acordo com a empresa (a atuação afim em relação ao mercado)
+
+Vantagens:
+- Contabilizar a performance de cada colaborador da empresa
+- Ajuda os gerentes a formularem ajustes (Adequação da estratégia de reformulação. Ex: Treinamento)
+- Tudo está na mesma página, ou seja, visualização total da saúde da empresa
+- Trancking e progresso da empresa 
+- Simples e Objetiva
+
+Categorias e Níveis da KPI:
+- Operacional (tipo a rotina da empresa, medidas em processos mais curtos)
+- Estratégica (KPIs mais focados em um objetivo mais amplo dentro do prazo de uma organização. Ex: Crescimento de receita)
+- Lagging (Noção de conquistas anteriores. Ex: Vendas do ano anterior)
+- Leading (Noção de conquistas que estão por vir. Antecipadamente)
+- Qualitativa ou quantitativa (Muitos KPI são quantitativos. A qualitativa é muito mais de quem está observando, por exemplo)
+
+Niveis:
+- Company-Level (Nível organizacional)
+- Departament-Level ()
+- Project-Level
