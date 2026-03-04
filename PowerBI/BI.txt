@@ -58,25 +58,126 @@ Niveis:
 Quando usar as tabelas:
 📊 Quando usar cada tipo de visual no Power BI?
 Ao criar dashboards eficientes, escolher o visual certo faz toda a diferença. Aqui vai um guia rápido e direto:
+
 📈 Gráficos de Linha
 Use quando quiser mostrar tendência ao longo do tempo (dias, meses, anos). Ótimo para evolução de vendas, acessos, produção etc.
+
 📉 Gráficos de Área
 Bom para comparar tendências e demonstrar a proporção do todo ao longo do tempo. Ideal para analisar participação de categorias.
+
 📊 Gráficos de Barras e Colunas
 Perfeitos para comparações diretas entre categorias. Use para ver qual produto vende mais, qual equipe entrega mais, etc.
+
 🧱 Gráfico de Barras Empilhadas
 Mostra composição + comparação ao mesmo tempo. Ótimo para acompanhar como categorias participam de um total.
+
 🍩 Gráfico de Rosca / Pizza
 Úteis para destacar rapidamente percentuais de um total, mas só quando houver poucas categorias (3 a 5).
+
 📍 Mapas
 Use quando os dados tiverem localização geográfica. Excelente para distribuição de clientes, agências, filiais…
+
 📑 Tabelas e Matrizes
 Melhor opção quando o usuário precisa de detalhes, dados linha a linha ou análise estilo Excel.
+
 🚥 Indicadores / Cartões
 Ideais para mostrar métricas principais (KPIs) como faturamento, total de vendas, meta vs. realizado.
+
 📡 Gauge (Velocímetro)
 Ótimo para exibir progresso em relação à meta de forma visual e imediata.
+
 📊 Histogramas / Gráficos de Dispersão
 Use quando o objetivo for análise estatística, identificar padrões, correlações e distribuições.
+
 🧪 R e Python
 Indicados para visuais personalizados ou análises mais avançadas.
+
+
+MEDIDA DAX
+- Data Analysis Expressions
+
+Coluna Dinamica
+- Ex: Podemos utilizar o Power Query e seus recursos para transformar os dados da maneira mais adequada possível para nossas análises. Imagine que temos um conjunto de dados que são simples, mas possuem diversas informações que podem ser agregadas com relação a dados de outra coluna da mesma tabela
+- Pivot Column: é uma tecnica de transformação de dados usados para converter linhas em colunas, alinhada para uma melhor forma de organização e análise de dados, particularmente ligados ao power Query e Power BI
+
+Tabela Dinamica
+-
+
+Modelagem de Dados
+- Cubo multifacetado: Comparação de tabela com o Cubo
+
+- Necessidade de uma performance que o banco de dados relacional dificilmente vai conseguir oferecer.
+
+Modelagem Dimensional
+- Surgiu a partir de uma demanda/lacuna para melhoria de demandas como: 
+    - Melhor estruturação
+    - Escalabilidade
+    - Performatico
+    - Disponível
+    - Controle de concorrencia
+    - Retorno de Queries solicitadas
+    - Flexibilização necessária
+
+- Modelo transacional: tradicional
+    - Sistema de vendas
+    - Alta disponibilidade
+    - Confiança na estruturação e restrições
+
+- Modelo Dimensional: analítico
+    - Puxa informações de outros sistemas
+    - Análise x disponibilidade
+    - Entendimento melhor a depender do contexto
+    - Permite redundancias
+    - Esquema flexível
+    - Foco em analises
+    - Modelo em Cubo:
+        - Sistema em dimensões
+        - Linha (Rows = records) x Coluna (Columns = attributes) 
+        - Combinações de aspectos diferentes do mesmo lugar
+        - EX: Venda de produtos por paises nas datas delimitadas: Date x Country x Products (seria uma nova dimensão)
+        - Formalizando:
+            - Eixos: representa os componentes do Esquema
+            - Interseção: Representam medidas e dados do contexto
+            - Visão consolidada do contexto
+            - Visão de diferentes perspectivas
+    - Foco em rapidez, agilidade, acesso a informações
+- OLTP: Processamento de Transações Online
+- OLAP: Processamento Analítico Online
+
+Star Schema (até em redes tem o modelo de estrela)
+- Tabela do meio herda a informação das demais que a compões
+- Estrutura mais flexivel e mais usada
+- Mais difundido
+
+Snow Flake Schema
+- Diferente da estrela, as dimensões não possuem relacionamento entre si, ja no snow, isso pode acontecer
+- Normalizada do modelo em estrela
+- Estrutura melhor definida
+
+Galaxy Schema (Ou constelação)
+- Modelo em estrela que estão conectadas entre si
+- Compartilhamm modelos de dados das dimensões de outras
+- Processo de ETL vai fazer uma coleta de informações do DB, mapear para o MR e inserir as informações no sistema de OLAP
+    - Se for um SAP, os IDs são gigantes e se criam chaves artificiais
+
+Tabela fato
+- Relacionado a o que voce Quer
+- Qual seu objetivo com a análise? vendas? clientes? comportamento?
+- Depende da forma de abordagem
+- informações principais consolidada
+
+Tabela dimensão
+- Circundam as tabelas fato
+- Possui os detalhes das tabelas
+- PKs simples e dados exclusivos
+
+Chaves artificiais
+- Corresponde a uma instancia dentro de uma tabela do ER
+- Chave relacionada ao modelo Dimensional
+- Facilita a identificação de registros no modelo atual
+- Substitui a identificação, mas não sobrepõe a PK
+
+Granularidade
+- Nivel de detalhamento dos dados relacionados a materia (quanto menor, mais detalhes sobre ela(ou sobre uma tabela, no caso))
+- Quanto mais abaixa a granularidade, mais entidades relacionadas, atributos, tabela...
+- Granularidade x Processamento (cuidado, quanto menor a granularidade, mais necessidade de poder computacional para processá-las)
