@@ -165,11 +165,13 @@ Tabela fato
 - Qual seu objetivo com a análise? vendas? clientes? comportamento?
 - Depende da forma de abordagem
 - informações principais consolidada
+- Contém dados observacionais
 
 Tabela dimensão
 - Circundam as tabelas fato
 - Possui os detalhes das tabelas
 - PKs simples e dados exclusivos
+- Contém informações sobre entidades especificas contifas nos dados
 
 Chaves artificiais
 - Corresponde a uma instancia dentro de uma tabela do ER
@@ -181,3 +183,18 @@ Granularidade
 - Nivel de detalhamento dos dados relacionados a materia (quanto menor, mais detalhes sobre ela(ou sobre uma tabela, no caso))
 - Quanto mais abaixa a granularidade, mais entidades relacionadas, atributos, tabela...
 - Granularidade x Processamento (cuidado, quanto menor a granularidade, mais necessidade de poder computacional para processá-las)
+
+Criando nova tabela pelo POWERBI
+- Com essa função, criar uma tabela em si é mais dificil
+- Porém dificil não é impossivel:
+    1. Clique em "Combinar" pelo power Query
+    2. Selecione meio que a tabela principal norteadora e a que deseja Combinar
+    3. Após isso, a unificação das duas tabelas serão feitas
+    4. Vale ressaltar que é importante ter um dado de ligação entre eles!!
+    5. Faça o tratamento dos dados que te importam
+    6. Dentro da tabela fato, haverão redundancias, mas entenda o que é e o que não é importante para sua analise
+    7. Mescle colunas caso precise (Lembre-se de colocar o separador/delimitador entre eles)
+
+Inserir medidas
+- Inserir medidas no powerBI não necessariamente cria uma nova tabela, apenas cria uma nova medida com base nas informações que lhe foi passada
+- Essas medidas ajudam na melhor interpretação para os relatórios
